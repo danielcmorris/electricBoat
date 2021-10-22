@@ -1,101 +1,284 @@
+<h1>PERFORMANCE MODELING SPREADSHEET FOR ELECTRIC PROPULSION SYSTEMS IN DISPLACEMENT MONOHULL BOATS</h1>
+
 <form #myform="ngForm" (ngSubmit)="register(myform)" class="form form-register">
-    <h1>PERFORMANCE MODELING SPREADSHEET FOR ELECTRIC PROPULSION SYSTEMS IN DISPLACEMENT MONOHULL BOATS</h1>
+    <div style="width:98%;height:600px;border:solid 1px;padding-left:10px;">
+        <div style="width:450px;float:left">
 
-    <h2>Hull Data</h2>
 
-    <mat-form-field class="mid-text"  >
-        <input matInput name="makeModel" placeholder="Boat Make and Model" [(ngModel)]="makeModel" >
-    </mat-form-field>
-    <br>
-    <mat-form-field class="mid-text" >
-        <input matInput name="waterline" [(ngModel)]="waterline" placeholder="LWL">
-        <mat-hint>lenght of the boat at the waterline</mat-hint>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="mid-text"> 
-        <input matInput name="displacement" [(ngModel)]="displacement" placeholder="Displacement in Lbs">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="mid-text">
-        <input matInput name="depth" [(ngModel)]="depth" placeholder="Depth of Hull" >
-        <mat-hint>exclude keel and rudder</mat-hint>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="mid-text">
-        <input matInput name="beam" [(ngModel)]="beam" placeholder="Maximum Waterline Beam">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="mid-text">
-        <input matInput name="csa" [(ngModel)]="csa" placeholder="CSA">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="mid-text"  >
-        <input matInput name="search" [(ngModel)]="prismatic" placeholder="Prismatic Coefficent">
-    </mat-form-field>
- 
-<hr>
+            <h2>Hull Data</h2>
 
-<table border="1">
-    <tr>
-        <td class="grid-title">SPEED LENGTH RATIO</td>
-        <td>.30</td><td>.40</td><td>.50</td><td>.60</td><td>.70</td><td>.80</td><td>.90</td><td>.95</td><td>1.00</td><td>1.05</td><td>1.10</td><td>1.15</td><td>1.20</td><td>1.25</td><td>1.30</td><td>1.35</td>
+            <mat-form-field class="mid-text">
+                <input matInput name="makeModel" placeholder="Boat Make and Model" [(ngModel)]="makeModel">
+            </mat-form-field>
+            <mat-form-field class="mid-text">
+                <input matInput name="waterline" [(ngModel)]="waterline"
+                    placeholder="LWL (lenght of the boat at the waterline)">
+            </mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="displacement" [(ngModel)]="displacement"
+                    placeholder="Displacement in Lbs"></mat-form-field>
+            <mat-form-field class="mid-text">
+                <input matInput name="depth" [(ngModel)]="depth" placeholder="Draft (exclude keel and rudder)"
+                    (change)="getCSA()">
+            </mat-form-field>
+            <mat-form-field class="mid-text">
+                <input matInput name="beam" [(ngModel)]="beam" placeholder="Maximum Waterline Beam">
+            </mat-form-field>
+            <mat-form-field class="mid-text">
+                <input matInput name="csa" [(ngModel)]="csa" placeholder="CSA (cross sectional area)">
 
-    </tr>
-    <tr>
-        <td class="grid-title">SPEED IN KNOTS</td>
-        <td>{{speed(.3)}}</td><td>{{speed(.4)}}</td><td>{{speed(.5)}}</td><td>{{speed(.6)}}</td><td>{{speed(.7)}}</td><td>{{speed(.8)}}</td><td>{{speed(.9)}}</td><td>{{speed(.95)}}</td><td>{{speed(1)}}</td>
-        <td>{{speed(1.05)}}</td><td>{{speed(1.1)}}</td><td>{{speed(1.15)}}</td><td>{{speed(1.2)}}</td><td>{{speed(1.25)}}</td><td>{{speed(1.3)}}</td><td>{{speed(1.35)}}</td>
+            </mat-form-field>
+            <mat-form-field class="mid-text">
+                <input matInput name="search" [(ngModel)]="prismatic" placeholder="Prismatic Coefficent">
+            </mat-form-field>
+        </div>
 
-    </tr>
-    <tr>
-        <td class="grid-title">ESTIMATED HULL DRAG LBS.</td>
-        <td colspan="8"></td>
-        <td>{{hullDrag(17)}}</td>
-        <td>{{hullDrag(19)}}</td>
-        <td>{{hullDrag(22)}}</td>
-        <td>{{hullDrag(27)}}</td>
-        <td>{{hullDrag(33)}}</td>
-        <td>{{hullDrag(42)}}</td>
-        <td>{{hullDrag(54)}}</td>
-        <td>{{hullDrag(70)}}</td>                 
-    </tr>
-    <tr>
-        <td class="grid-title"> HP required for 3 blade Prop </td>
-        <td colspan="8"></td>
-        <td>{{hpReq(1,17)}}</td>
-        <td>{{hpReq(1.05,19)}}</td>
-        <td>{{hpReq(1.1,22)}}</td>
-        <td>{{hpReq(1.15,27)}}</td>
-        <td>{{hpReq(1.2,33)}}</td>
-        <td>{{hpReq(1.25,42)}}</td>
-        <td>{{hpReq(1.3,54)}}</td>
-        <td>{{hpReq(1.35,70)}}</td>    
-    </tr>
-</table>
-<h2>Propeller Model</h2>
-<ul>
-    <li>Recommended Prop Diameter : <b>{{prop()}}</b></li>
-    <li>Efficient shaft speed @ hull speed : <b>{{efficient()}}</b></li>
-    <li>Optimum pitch for 55% slip  @ hull speed: <b>{{optPitch()}}</b></li>
-</ul>
-       
+        <div style="margin-left: 450px;padding-left:10px;width:100%-450;">
+            <h2>HULL PERFORMANCE</h2>
+            <table border="1">
+                <tr>
+                    <td class="grid-title">SPEED LENGTH RATIO</td>
+                    <td>.30</td>
+                    <td>.40</td>
+                    <td>.50</td>
+                    <td>.60</td>
+                    <td>.70</td>
+                    <td>.80</td>
+                    <td>.90</td>
+                    <td>.95</td>
+                    <td>1.00</td>
+                    <td>1.05</td>
+                    <td>1.10</td>
+                    <td>1.15</td>
+                    <td>1.20</td>
+                    <td>1.25</td>
+                    <td>1.30</td>
+                    <td>1.35</td>
+
+                </tr>
+                <tr>
+                    <td class="grid-title">SPEED IN KNOTS</td>
+                    <td>{{speed(.3).toFixed(1)}}</td>
+                    <td>{{speed(.4).toFixed(1)}}</td>
+                    <td>{{speed(.5).toFixed(1)}}</td>
+                    <td>{{speed(.6).toFixed(1)}}</td>
+                    <td>{{speed(.7).toFixed(1)}}</td>
+                    <td>{{speed(.8).toFixed(1)}}</td>
+                    <td>{{speed(.9).toFixed(1)}}</td>
+                    <td>{{speed(.95).toFixed(1)}}</td>
+                    <td>{{speed(1).toFixed(1)}}</td>
+                    <td>{{speed(1.05).toFixed(1)}}</td>
+                    <td>{{speed(1.1).toFixed(1)}}</td>
+                    <td>{{speed(1.15).toFixed(1)}}</td>
+                    <td>{{speed(1.2).toFixed(1)}}</td>
+                    <td>{{speed(1.25).toFixed(1)}}</td>
+                    <td>{{speed(1.3).toFixed(1)}}</td>
+                    <td>{{speed(1.35).toFixed(1)}}</td>
+
+                </tr>
+                <tr>
+                    <td class="grid-title">ESTIMATED HULL DRAG LBS.</td>
+                    <td colspan="8"></td>
+                    <td>{{hullDrag(17)}}</td>
+                    <td>{{hullDrag(19)}}</td>
+                    <td>{{hullDrag(22)}}</td>
+                    <td>{{hullDrag(27)}}</td>
+                    <td>{{hullDrag(33)}}</td>
+                    <td>{{hullDrag(42)}}</td>
+                    <td>{{hullDrag(54)}}</td>
+                    <td>{{hullDrag(70)}}</td>
+                </tr>
+                <tr>
+                    <td class="grid-title"> HP required for 3 blade Prop </td>
+                    <td colspan="8"></td>
+                    <td>{{hpReq(1,17)}}</td>
+                    <td>{{hpReq(1.05,19)}}</td>
+                    <td>{{hpReq(1.1,22)}}</td>
+                    <td>{{hpReq(1.15,27)}}</td>
+                    <td>{{hpReq(1.2,33)}}</td>
+                    <td>{{hpReq(1.25,42)}}</td>
+                    <td>{{hpReq(1.3,54)}}</td>
+                    <td>{{hpReq(1.35,70)}}</td>
+                </tr>
+            </table>
+            <h2>Propeller Model</h2>
+            <ul>
+                <li>Recommended Prop Diameter : <b>{{prop()}}</b></li>
+                <li>Efficient shaft speed @ hull speed : <b>{{efficient()}}</b></li>
+                <li>Optimum pitch for 55% slip @ hull speed: <b>{{optPitch()}}</b></li>
+            </ul>
+            <h2>Current Propeller Details</h2>
+            <mat-form-field class="mid-text">
+                <input matInput name="propeller.diameter" [(ngModel)]="propeller.diameter"
+                    placeholder="Propeller Diameter">
+            </mat-form-field>
+            <mat-form-field class="mid-text">
+                <input matInput name="propeller.maxHullSpeedInKnots" [(ngModel)]="propeller.maxHullSpeedInKnots"
+                    placeholder="Max Hullspeed (in knots)">
+            </mat-form-field>
+            <mat-form-field class="mid-text">
+                <input matInput name="propeller.rpmAtHullSpeed" [(ngModel)]="propeller.rpmAtHullSpeed"
+                    placeholder="Shaft RPM @ Hull Speed">
+            </mat-form-field>
+             <br>
+            <div style="width:100%;">
+                <ul>
+                    <li>Calculated Pitch for 55% slip: {{calculatedPitch()}}</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <div style="width:98%;height:600px;border:solid 1px;padding-left:10px;">
+        <div style="width:450px;float:left;">
+            <h2>MOTOR & DRIVE DATA </h2>
+            <mat-form-field class="long-text"><input matInput name="Make & model" [(ngModel)]="motor.makeModel"
+                    placeholder="Make & model"></mat-form-field><br>
+            <mat-form-field class="mid-text"><input matInput name="Max Voltage rating"
+                    [(ngModel)]="motor.maxVoltageRating" placeholder="Max Voltage rating"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="RPM @ Max Voltage"
+                    [(ngModel)]="motor.rpmAtMaxVoltage" placeholder="RPM @ Max Voltage"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="Max. continuous Current rating"
+                    [(ngModel)]="motor.maxContinuousCurrentRating" placeholder="Max. continuous Current rating">
+            </mat-form-field>
+
+            <mat-form-field class="mid-text"><input matInput name="Max.continuous torque rating"
+                    [(ngModel)]="motor.maxContinuousTorqueRating" placeholder="Max.continuous torque rating">
+            </mat-form-field>
+
+            <mat-form-field class="mid-text"><input matInput name="Max peak Current rating"
+                    [(ngModel)]="motor.maxPeakCurrentRating" placeholder="Max peak Current rating"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="Max peak torque rating"
+                    [(ngModel)]="motor.maxPeakTorqueRating" placeholder="Max peak torque rating"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="Motor efficiency rating"
+                    [(ngModel)]="motor.motorEfficiencyRating" placeholder="Motor efficiency rating"></mat-form-field>
+
+            <mat-form-field class="mid-text"><input matInput name="Motor torque constant:lbs/ft. per amp"
+                    [(ngModel)]="motor.motorTorqueConstantLbsPerFtPerAmp"
+                    placeholder="Motor torque constant:lbs/ft. per amp">
+            </mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="Motor voltage constant: rpms per Volt"
+                    [(ngModel)]="motor.motorVoltageConstantRpmsPerVolt"
+                    placeholder="Motor voltage constant: rpms per Volt">
+            </mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="Motorshaft to prop shaft reduction ratio"
+                    [(ngModel)]="motor.motorshaftToPropShaftReductionRatio"
+                    placeholder="Motorshaft to prop shaft reduction ratio">
+            </mat-form-field>
+            <h2>TORQUE SPEC CONVERSON TABLE</h2>
+        </div>
+        <div style="margin-left: 450px;padding-left:10px;width:100%-450;">
+            <h2>CONTROLLER DATA</h2>
+            <mat-form-field class="long-text"><input matInput name="controller.makeModel"
+                    [(ngModel)]="controller.makeModel" placeholder="Make & model"></mat-form-field><br>
+            <mat-form-field class="mid-text"><input matInput name="controller.minVoltageRating"
+                    [(ngModel)]="controller.minVoltageRating" placeholder="Min Voltage rating"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="controller.maxVoltageRating"
+                    [(ngModel)]="controller.maxVoltageRating" placeholder="Max Voltage rating"></mat-form-field>
+            <mat-form-field class="long-text"><input matInput name="controller.MaxPeakVoltage"
+                    [(ngModel)]="controller.MaxPeakVoltage" placeholder="Max Peak Current (1 min or less) (amps)">
+            </mat-form-field>
+            <mat-form-field class="long-text"><input matInput name="controller.maxOneHourRating"
+                    [(ngModel)]="controller.maxOneHourRating" placeholder="Max 1 Hour Current  (amps)">
+            </mat-form-field>
+            <mat-form-field class="long-text"><input matInput name="controller.maxContinuousCurrentRating"
+                    [(ngModel)]="controller.maxContinuousCurrentRating" placeholder="Max Continuous Current (amps)">
+            </mat-form-field>
+
+
+
+            <h2>BATTERY SPECIFICATON</h2>
+
+            <mat-form-field class="mid-text"><input matInput name="Make & Model" [(ngModel)]="battery.makeModel"
+                    placeholder="Make & Model"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="BCI group" [(ngModel)]="battery.bci"
+                    placeholder="BCI group"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="Amp Hour Rating @ C/20"
+                    [(ngModel)]="battery.ampHourRating" placeholder="Amp Hour Rating @ C/20"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="Battery voltage" [(ngModel)]="battery.voltage"
+                    placeholder="Battery voltage"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="# of batteries" [(ngModel)]="battery.count"
+                    placeholder="# of batteries"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="String voltage" [(ngModel)]="battery.stringVoltage"
+                    placeholder="String voltage"></mat-form-field>
+            <mat-form-field class="mid-text"><input matInput name="Peukert #" [(ngModel)]="battery.peukertNumber"
+                    placeholder="Peukert #"></mat-form-field>
+
+        </div>
+    </div>
+    <h2>CALCULATED PERFORMANCE DATA</h2>
+    <table border=1>
+        <tr>
+            <TH>Speed</TH>
+            <TH>Shaft</TH>
+            <TH>Shaft</TH>
+            <TH>Torque</TH>
+            <TH>Static Thrust</TH>
+            <TH>Motor</TH>
+            <TH>Motor</TH>
+            <TH>Motor</TH>
+            <TH>Motor</TH>
+            <TH>Motor</TH>
+            <TH>Motor</TH>
+            <TH>String </TH>
+            <TH>Battery</TH>
+            <TH>Runtime in Minutes</TH>
+            <TH></TH>
+            <TH></TH>
+        </tr>
+        <tr>
+            <TH>Knots</TH>
+            <TH>RPM</TH>
+            <TH>HP</TH>
+            <TH> LBS/FT</TH>
+            <TH>LBS</TH>
+            <TH>Torque</TH>
+            <TH>RPM</TH>
+            <TH>Volts</TH>
+            <TH>Current</TH>
+            <TH>KW</TH>
+            <TH>HP</TH>
+            <TH>Current</TH>
+            <TH>Current</TH>
+            <TH>50%DOD</TH>
+            <TH>80%DOD</TH>
+            <TH>100%DOD</TH>
+        </tr>
+        <tr *ngFor="let row of performers;">
+            <td>
+                {{row.strSpeed}}
+            </td>
+            <td>{{row.rpm}}</td>
+            <td>{{row.hp}}</td>
+            <td>{{propeller.pitch | json }}</td>
+        </tr>
+    </table>
+
 </form>
 
 
 <h2>Some Definitions</h2>
-<h3>LWL  Length at Waterline</h3>
-<p>Rather than the overall length of the boat, this is the length from the point at which the bow touches the water to the stern leaving the water.</p>
-<h3>SLR  Speed Length Ratio</h3>
+<h3>LWL Length at Waterline</h3>
+<p>Rather than the overall length of the boat, this is the length from the point at which the bow touches the water to
+    the stern leaving the water.</p>
+<h3>SLR Speed Length Ratio</h3>
 <p>Simply put, the S/L ratio is boat speed in knots, divided by the square root of the LWL (in feet).</p>
+<h3>CSA (Cross Sectional Area)</h3>
+
 <h3>Hull Speed</h3>
-<p>As a very general rule the maximum speed of any displacement hull–commonly called its hull 
-    speed–is governed by a simple formula: hull speed in knots equals 1.34 times the square 
-    root of the waterline length in feet (HS = 1.34 x √LWL).     Thus, for example, if you 
-    have a 35-foot boat with a waterline length of 28 feet, its hull speed works out to a 
+<p>As a very general rule the maximum speed of any displacement hull–commonly called its hull
+    speed–is governed by a simple formula: hull speed in knots equals 1.34 times the square
+    root of the waterline length in feet (HS = 1.34 x √LWL). Thus, for example, if you
+    have a 35-foot boat with a waterline length of 28 feet, its hull speed works out to a
     little over 7 knots (1.34 x √28 = 7.09).</p>
 
 
-   <h2>References</h2> 
-   <ul>
-       <li><a href="https://dmsonline.us/the-truth-of-hull-speed-how-to-break-the-sailing-speed-limit/" target="_blank">the truth of hull-speed</a></li>
-   </ul>
+<h2>References</h2>
+<ul>
+    <li><a href="https://dmsonline.us/the-truth-of-hull-speed-how-to-break-the-sailing-speed-limit/" target="_blank">the
+            truth of hull-speed</a></li>
+    <li><a href="https://www.physicsforums.com/threads/how-to-find-the-depth-of-immersion-of-this-boat-model.804212/"
+            target="_blank">finding depth and immersion</a></li>
+
+
+</ul>

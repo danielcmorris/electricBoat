@@ -1,3 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-.mid-text{width:400px; margin:10px}
+h1{font-weight: bold;font-size: 14pt; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+h2{font-weight: bold;font-size: 12pt; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+
+.mid-text{width:200px; margin-bottom:10px;margin-right:10px;}
+.long-text{width:400px; margin-bottom:10px;margin-right:10px;}
