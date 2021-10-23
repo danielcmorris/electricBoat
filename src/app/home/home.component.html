@@ -207,7 +207,7 @@
         </div>
     </div>
     <h2>CALCULATED PERFORMANCE DATA</h2>
-    <table border=1>
+    <table border=1 width="99%">
         <tr>
             <TH>Speed</TH>
             <TH>Shaft</TH>
@@ -222,9 +222,8 @@
             <TH>Motor</TH>
             <TH>String </TH>
             <TH>Battery</TH>
-            <TH>Runtime in Minutes</TH>
-            <TH></TH>
-            <TH></TH>
+            <TH colspan="3">Runtime in Minutes</TH>
+            <TH>Hours</TH>
         </tr>
         <tr>
             <TH>Knots</TH>
@@ -243,14 +242,34 @@
             <TH>50%DOD</TH>
             <TH>80%DOD</TH>
             <TH>100%DOD</TH>
+            <TH>100%DOD</TH>
         </tr>
         <tr *ngFor="let row of performers;">
             <td>
                 {{row.strSpeed}}
             </td>
-            <td>{{row.rpm}}</td>
-            <td>{{row.hp}}</td>
-            <td>{{propeller.pitch | json }}</td>
+            <td>{{row.rpm.toFixed(1)}}</td>
+            <td>{{row.hp.toFixed(1)}}</td>
+            <td>{{row.torque.toFixed(1)}}</td>
+            <td>{{row.thrust.toFixed(1)}}</td>
+            <td>{{row.motorTorque.toFixed(1)}}</td>
+            <td>{{row.motorRpm.toFixed(1)}}</td>
+            <td>{{row.volts.toFixed(1)}}</td>
+            <td>{{row.current.toFixed(1)}}</td>
+            <td>{{row.kw.toFixed(1)}}</td>
+            <td>{{row.motorHp.toFixed(1)}}</td>
+            <td>{{row.stringCurrent.toFixed(1)}}</td>
+            <td>{{row.batteryCurrent.toFixed(1)}}</td>
+            <td>{{row.runTime50.toFixed(2)}}</td>
+            <td>{{row.runTime80.toFixed(2)}}</td>
+            <td>{{row.runTimeFull.toFixed(2)}}</td>
+            <td>{{row.runTimeHour.toFixed(2)}}</td>
+            
+            
+
+            
+            
+ 
         </tr>
     </table>
 
