@@ -1,8 +1,8 @@
 <h1>PERFORMANCE MODELING SPREADSHEET FOR ELECTRIC PROPULSION SYSTEMS IN DISPLACEMENT MONOHULL BOATS</h1>
 
 <form #myform="ngForm" (ngSubmit)="register(myform)" class="form form-register">
-    <div style="width:98%;height:600px;border:solid 1px;padding-left:10px;">
-        <div style="width:450px;float:left">
+    <div style="width:98%;height:670px;border:solid 1px;padding-left:10px; ">
+        <div style="width:345px;float:left;;">
 
 
             <h2>Hull Data</h2>
@@ -32,27 +32,13 @@
             </mat-form-field>
         </div>
 
-        <div style="margin-left: 450px;padding-left:10px;width:100%-450;">
+        <div style="margin-left: 350px;padding-left:10px;width:90%-350;">
             <h2>HULL PERFORMANCE</h2>
-            <table border="1">
+            <table border="1" width="95%">
                 <tr>
                     <td class="grid-title">SPEED LENGTH RATIO</td>
                     <td *ngFor="let s of speeds">{{s}}</td>
-                    <!-- <td>.40</td>
-                    <td>.50</td>
-                    <td>.60</td>
-                    <td>.70</td>
-                    <td>.80</td>
-                    <td>.90</td>
-                    <td>.95</td>
-                    <td>1.00</td>
-                    <td>1.05</td>
-                    <td>1.10</td>
-                    <td>1.15</td>
-                    <td>1.20</td>
-                    <td>1.25</td>
-                    <td>1.30</td>
-                    <td>1.35</td> -->
+             
 
                 </tr>
                 <tr>
@@ -113,8 +99,10 @@
         </div>
     </div>
     <hr>
-    <div style="width:98%;height:600px;border:solid 1px;padding-left:10px;">
-        <div style="width:450px;float:left;">
+    <p style="page-break-before: always;">&nbsp;</p>
+
+    <div style="width:98%;height:700px;border:solid 1px;padding-left:10px;">
+        <div style="width:420px;float:left;">
             <h2>MOTOR & DRIVE DATA </h2>
             <mat-form-field class="long-text"><input matInput name="Make & model" [(ngModel)]="motor.makeModel"
                     placeholder="Make & model"></mat-form-field><br>
@@ -157,13 +145,13 @@
                     [(ngModel)]="controller.minVoltageRating" placeholder="Min Voltage rating"></mat-form-field>
             <mat-form-field class="mid-text"><input matInput name="controller.maxVoltageRating"
                     [(ngModel)]="controller.maxVoltageRating" placeholder="Max Voltage rating"></mat-form-field>
-            <mat-form-field class="long-text"><input matInput name="controller.MaxPeakVoltage"
+            <mat-form-field class="mid-text"><input matInput name="controller.MaxPeakVoltage"
                     [(ngModel)]="controller.MaxPeakVoltage" placeholder="Max Peak Current (1 min or less) (amps)">
             </mat-form-field>
-            <mat-form-field class="long-text"><input matInput name="controller.maxOneHourRating"
+            <mat-form-field class="mid-text"><input matInput name="controller.maxOneHourRating"
                     [(ngModel)]="controller.maxOneHourRating" placeholder="Max 1 Hour Current  (amps)">
             </mat-form-field>
-            <mat-form-field class="long-text"><input matInput name="controller.maxContinuousCurrentRating"
+            <mat-form-field class="mid-text"><input matInput name="controller.maxContinuousCurrentRating"
                     [(ngModel)]="controller.maxContinuousCurrentRating" placeholder="Max Continuous Current (amps)">
             </mat-form-field>
             <h2>BATTERY SPECIFICATON</h2>
@@ -184,6 +172,10 @@
 
         </div>
     </div>
+
+
+    <p style="page-break-before: always;">&nbsp;</p>
+
     <h2>CALCULATED PERFORMANCE DATA</h2>
     <table border=1 width="99%">
         <tr>
@@ -244,6 +236,7 @@
     </table>
 
 </form>
+<p style="page-break-before: always;">&nbsp;</p>
 
 
 <h2>Some Definitions</h2>
