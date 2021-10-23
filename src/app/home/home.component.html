@@ -37,8 +37,8 @@
             <table border="1">
                 <tr>
                     <td class="grid-title">SPEED LENGTH RATIO</td>
-                    <td>.30</td>
-                    <td>.40</td>
+                    <td *ngFor="let s of speeds">{{s}}</td>
+                    <!-- <td>.40</td>
                     <td>.50</td>
                     <td>.60</td>
                     <td>.70</td>
@@ -52,28 +52,12 @@
                     <td>1.20</td>
                     <td>1.25</td>
                     <td>1.30</td>
-                    <td>1.35</td>
+                    <td>1.35</td> -->
 
                 </tr>
                 <tr>
                     <td class="grid-title">SPEED IN KNOTS</td>
-                    <td>{{speed(.3).toFixed(1)}}</td>
-                    <td>{{speed(.4).toFixed(1)}}</td>
-                    <td>{{speed(.5).toFixed(1)}}</td>
-                    <td>{{speed(.6).toFixed(1)}}</td>
-                    <td>{{speed(.7).toFixed(1)}}</td>
-                    <td>{{speed(.8).toFixed(1)}}</td>
-                    <td>{{speed(.9).toFixed(1)}}</td>
-                    <td>{{speed(.95).toFixed(1)}}</td>
-                    <td>{{speed(1).toFixed(1)}}</td>
-                    <td>{{speed(1.05).toFixed(1)}}</td>
-                    <td>{{speed(1.1).toFixed(1)}}</td>
-                    <td>{{speed(1.15).toFixed(1)}}</td>
-                    <td>{{speed(1.2).toFixed(1)}}</td>
-                    <td>{{speed(1.25).toFixed(1)}}</td>
-                    <td>{{speed(1.3).toFixed(1)}}</td>
-                    <td>{{speed(1.35).toFixed(1)}}</td>
-
+                    <td *ngFor="let s of speeds">{{speed(s).toFixed(1)}}</td>            
                 </tr>
                 <tr>
                     <td class="grid-title">ESTIMATED HULL DRAG LBS.</td>
@@ -86,7 +70,7 @@
                     <td>{{hullDrag(42)}}</td>
                     <td>{{hullDrag(54)}}</td>
                     <td>{{hullDrag(70)}}</td>
-                </tr>
+                </tr>        
                 <tr>
                     <td class="grid-title"> HP required for 3 blade Prop </td>
                     <td colspan="8"></td>
@@ -141,11 +125,9 @@
             <mat-form-field class="mid-text"><input matInput name="Max. continuous Current rating"
                     [(ngModel)]="motor.maxContinuousCurrentRating" placeholder="Max. continuous Current rating">
             </mat-form-field>
-
             <mat-form-field class="mid-text"><input matInput name="Max.continuous torque rating"
                     [(ngModel)]="motor.maxContinuousTorqueRating" placeholder="Max.continuous torque rating">
             </mat-form-field>
-
             <mat-form-field class="mid-text"><input matInput name="Max peak Current rating"
                     [(ngModel)]="motor.maxPeakCurrentRating" placeholder="Max peak Current rating"></mat-form-field>
             <mat-form-field class="mid-text"><input matInput name="Max peak torque rating"
@@ -184,11 +166,7 @@
             <mat-form-field class="long-text"><input matInput name="controller.maxContinuousCurrentRating"
                     [(ngModel)]="controller.maxContinuousCurrentRating" placeholder="Max Continuous Current (amps)">
             </mat-form-field>
-
-
-
             <h2>BATTERY SPECIFICATON</h2>
-
             <mat-form-field class="mid-text"><input matInput name="Make & Model" [(ngModel)]="battery.makeModel"
                     placeholder="Make & Model"></mat-form-field>
             <mat-form-field class="mid-text"><input matInput name="BCI group" [(ngModel)]="battery.bci"
@@ -245,9 +223,7 @@
             <TH>100%DOD</TH>
         </tr>
         <tr *ngFor="let row of performers;">
-            <td>
-                {{row.strSpeed}}
-            </td>
+            <td> {{row.strSpeed}} </td>
             <td>{{row.rpm.toFixed(1)}}</td>
             <td>{{row.hp.toFixed(1)}}</td>
             <td>{{row.torque.toFixed(1)}}</td>
@@ -264,12 +240,6 @@
             <td>{{row.runTime80.toFixed(2)}}</td>
             <td>{{row.runTimeFull.toFixed(2)}}</td>
             <td>{{row.runTimeHour.toFixed(2)}}</td>
-            
-            
-
-            
-            
- 
         </tr>
     </table>
 
@@ -294,6 +264,7 @@
 
 <h2>References</h2>
 <ul>
+    <li><a href="assets/Alden Pilothouse Eboat.xlsx" target="_blank">The excel sheet forming the basis for this page</a></li>
     <li><a href="https://dmsonline.us/the-truth-of-hull-speed-how-to-break-the-sailing-speed-limit/" target="_blank">the
             truth of hull-speed</a></li>
     <li><a href="https://www.physicsforums.com/threads/how-to-find-the-depth-of-immersion-of-this-boat-model.804212/"

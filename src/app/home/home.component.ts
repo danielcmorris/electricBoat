@@ -58,6 +58,8 @@ export class HomeComponent implements OnInit {
 
 
   performers: any = [];
+  speeds = [.3, .4, .5, .6, .7, .8, .9, .95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35]
+
   constructor() {
 
     this.propeller = new Propeller();
@@ -66,9 +68,8 @@ export class HomeComponent implements OnInit {
     this.propeller.maxHullSpeedInKnots = 6.57909;
 
 
-    let speeds = [.3, .4, .5, .6, .7, .8, .9, .95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35]
-
-    speeds.forEach(s => {
+    
+    this.speeds.forEach(s => {
       let speed = this.speed(s);
       var p = new Performer(speed, this.propeller, this.motor, this.battery);
 
