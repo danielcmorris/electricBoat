@@ -1,0 +1,70 @@
+<mat-card>
+    <mat-card-title>Hull Data</mat-card-title>
+    <mat-card-subtitle>Details about your vessel's hull will help calculate drag and maximum hull speed
+    </mat-card-subtitle>
+    <mat-card-content>
+        <mat-form-field class="mid-text">
+            <input matInput name="makeModel" placeholder="Boat Make and Model" [(ngModel)]="boat.makeModel">
+        </mat-form-field>
+        <mat-form-field class="mid-text">
+            <input matInput name="waterline" [(ngModel)]="boat.waterline"
+                placeholder="LWL (lenght of the boat at the waterline)">
+        </mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="displacement" [(ngModel)]="boat.displacement"
+                placeholder="Displacement in Lbs"></mat-form-field>
+        <mat-form-field class="mid-text">
+            <input matInput name="depth" [(ngModel)]="boat.depth" placeholder="Draft (exclude keel and rudder)">
+        </mat-form-field>
+        <mat-form-field class="mid-text">
+            <input matInput name="beam" [(ngModel)]="boat.beam" placeholder="Maximum Waterline Beam">
+        </mat-form-field>
+        <mat-form-field class="mid-text">
+            <input matInput name="search" [(ngModel)]="boat.prismatic" placeholder="Prismatic Coefficent">
+        </mat-form-field>
+
+        <h2>HULL PERFORMANCE</h2>
+        <table class="styled-table">
+            <tr>
+                <td class="grid-title">SPEED LENGTH RATIO</td>
+                <td *ngFor="let s of speeds">{{s}}</td>        
+            </tr>
+            <tr>
+                <td class="grid-title">SPEED IN KNOTS</td>
+                <td *ngFor="let s of speeds">{{speed(s).toFixed(1)}}</td>            
+            </tr>
+            <tr>
+                <td class="grid-title">ESTIMATED HULL DRAG LBS.</td>
+                <td colspan="8"></td>
+                <td>{{hullDrag(17)}}</td>
+                <td>{{hullDrag(19)}}</td>
+                <td>{{hullDrag(22)}}</td>
+                <td>{{hullDrag(27)}}</td>
+                <td>{{hullDrag(33)}}</td>
+                <td>{{hullDrag(42)}}</td>
+                <td>{{hullDrag(54)}}</td>
+                <td>{{hullDrag(70)}}</td>
+            </tr>        
+            <tr>
+                <td class="grid-title"> HP required for 3 blade Prop </td>
+                <td colspan="8"></td>
+                <td>{{hpReq(1,17)}}</td>
+                <td>{{hpReq(1.05,19)}}</td>
+                <td>{{hpReq(1.1,22)}}</td>
+                <td>{{hpReq(1.15,27)}}</td>
+                <td>{{hpReq(1.2,33)}}</td>
+                <td>{{hpReq(1.25,42)}}</td>
+                <td>{{hpReq(1.3,54)}}</td>
+                <td>{{hpReq(1.35,70)}}</td>
+            </tr>
+        </table>
+
+
+
+        <mat-card-actions>
+            <button mat-raised-button>Cancel</button>
+            <button mat-raised-button color="primary">Continue</button>
+        </mat-card-actions>
+
+    </mat-card-content>
+    <mat-card-footer></mat-card-footer>
+</mat-card>

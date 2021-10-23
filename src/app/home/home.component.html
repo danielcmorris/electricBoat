@@ -1,5 +1,7 @@
 <h1>PERFORMANCE MODELING SPREADSHEET FOR ELECTRIC PROPULSION SYSTEMS IN DISPLACEMENT MONOHULL BOATS</h1>
 
+<app-boat></app-boat>
+
 <form #myform="ngForm" (ngSubmit)="register(myform)" class="form form-register">
     <div style="width:98%;height:670px;border:solid 1px;padding-left:10px; ">
         <div style="width:345px;float:left;;">
@@ -37,9 +39,7 @@
             <table border="1" width="95%">
                 <tr>
                     <td class="grid-title">SPEED LENGTH RATIO</td>
-                    <td *ngFor="let s of speeds">{{s}}</td>
-             
-
+                    <td *ngFor="let s of speeds">{{s}}</td>        
                 </tr>
                 <tr>
                     <td class="grid-title">SPEED IN KNOTS</td>
