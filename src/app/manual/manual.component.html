@@ -1,0 +1,300 @@
+<mat-card>
+    <mat-card-title>PERFORMANCE MODELING SPREADSHEET FOR ELECTRIC PROPULSION SYSTEMS IN DISPLACEMENT MONOHULL BOATS
+        USER’S GUIDE</mat-card-title>
+    <mat-card-subtitle>September 17, 2005 First Edition</mat-card-subtitle>
+    <mat-card-content>
+
+
+        <p>
+
+            This is the first draft of a predictive performance model for planning electric boat installations in
+            displacement
+            monohull boats. I am an audio/video engineer used to working with complex mathematical models for room
+            acoustics and
+            performance predictions for sound systems and projection systems. Naval architecture and sailing are
+            hobbies. I have
+            been researching and playing with electric conversion calculations for a couple of years now. But most of
+            the rule
+            of thumb tables and simple equation sets for estimating performance under power are geared for IC engines
+            and there
+            has not been a simple coherent approach for modeling the power transfer characteristics of an electric
+            propulsion
+            system. The math involved in computational fluid dynamics of propulsion versus hull drag makes my brain go
+            numb and
+            my eyes glaze over after about an hour. This stuff can't be fully calculated in Excel and most people
+            wouldn't have
+            the required data for their hulls anyway. So I am hoping to come up with simplified rules of thumb
+            calculations and
+            data tables that will apply to most situations and get close enough results, say +/-10% or so that people
+            can have
+            some confidence when they plunk down the big bucks for the hardware.
+            Any predictive model is based on a set of underlying conditions to control the number of variables. This one
+            is no
+            different. The model parameters are as follows.
+        </p>
+        <ol>
+            <li>Hull performance data
+                <ul>
+                    <li>Waterline length and displacement entries are used to calculate speed length ratios and
+                        estimated hull
+                        resistance.</li>
+                    <li>Beam and hull depth entries are used to calculate optimum prop size.
+                    </li>
+                    <li>Prismatic coefficient is not used directly in calculations at this point.</li>
+                    <li>The speed/length ratio calculations are well known. The actual limiting ratio for displacement
+                        hulls is
+                        as high as 1.54 depending on hull design. The classic 1.34 ratio is just a point on the curve,
+                        but a
+                        practical one for most small boats as the power curve goes almost vertical beyond that point.
+                        Most
+                        efficient cruising speeds are going to be below 1.10 for most common hull types. The model
+                        calculates
+                        speed in knots referenced to speed length ratios based on the LWL entry.</li>
+                    <li>e. Hull drag estimates are based on tables and equations in an article by Ted Brewer in the July
+                        2004
+                        edition of Good Old Boat. They apply only to modern sailboats with Prismatic coefficients
+                        between .54
+                        and .58. Waterline lengths to beam ratios for such hulls are typically around 2.5-3:1. Older
+                        heavy
+                        displacement full keel hulls will have about 5% or so higher drag figures. These figures also
+                        assume a
+                        clean smooth hull.
+                    </li>
+                    <li>f. The horsepower calculation is for the actual minimum power required at the prop shaft for a 3
+                        blade
+                        prop of about 55% efficiency. No allowances are included for reserve power, drive system losses
+                        or
+                        accessories. It is reasonably accurate according to my correspondence with prop manufacturers.
+                        The
+                        requirements are the same regardless of the power source driving them.
+                    </li>
+                    <li>g. There is a table for entering towing test results in Lbs. If you want accurate results I
+                        highly
+                        recommend measuring the actual drag of your hull at various speeds with a spring scale between
+                        your boat
+                        and the tow vessel. The estimated drag will at least suggest an appropriate range for the spring
+                        scale.
+                        Use a GPS set to read speed in Knots instead of onboard instruments.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Propeller Model and Data Entry:
+                <ul>
+                    <li>a. The model suggests a close to optimally efficient prop size, shaft speed, and pitch based on
+                        the hull
+                        model data. It is included as a suggested starting point for selecting an appropriate propeller.
+                        Performance calculations are based on the data entry fields.
+                    </li>
+                    <li>b. The prop data fields allow entry of size and shaft speed.
+                    </li>
+                    <li>c. Valid shaft speed range for this model is 100-300rpm per knot of boat speed.
+                    </li>
+                    <li>d. For best efficiency one should fit as large a diameter propeller as possible. The limiting
+                        factors on
+                        diameter are usually available torque, maximum draft limits, and tip clearance to the hull or
+                        prop
+                        aperture. Optimum tip clearance is generally accepted as 1/3rd the diameter of the prop.
+                        Brewer’s rule
+                        of thumb for minimum tip clearance is 10% of prop diameter plus one inch.
+                    </li>
+                    <li>e. Sailors may want to reduce prop size or blade area to minimize drag under sail. Small props
+                        turning
+                        at high speed will have much greater cavitation and turbulence losses resulting in prop
+                        efficiencies
+                        closer to the 35% range than the 55% range. This model will not predict those losses
+                    </li>
+                    <li>f. Pitch is automatically calculated for a 55% slip factor. This conforms to a basic law of
+                        Newtonian
+                        physics that for every action there is an equal and opposite reaction. At any given steady state
+                        cruising speed, the mass x velocity squared plus thermodynamic losses of water flowing aft in
+                        the slip
+                        stream is exactly equal to the mass x velocity squared plus thermodynamic losses of the water
+                        displaced
+                        by the boat moving forward, I.E. 50% slip. There is a 5% fudge factor for losses due to
+                        turbulence and
+                        prop cavitation.
+                    </li>
+                    <li>g. Determining the ultimate optimum pitch for a particular IC engine and boat at full power is a
+                        real
+                        black art. For a given throttle setting an IC engine produces constant torque. Engine speed and
+                        horse
+                        power vary with the load. Over pitch the prop and you lose RPMs and power. Under pitch the prop
+                        and you
+                        over rev the engine. Props may vary in thrust response by a few of inches of pitch one way or
+                        the other
+                        due to differences in foil design. The manufacturers use voodoo to figure this stuff out. This
+                        is not an
+                        issue with series wound electric motors because the power response is exactly the opposite.
+                        Apply a
+                        known voltage and the motor is going to turn at a constant RPM. Current demand will vary as
+                        needed to
+                        meet the actual torque load. Lock the motor shaft in a vise and the current demand and torque
+                        will rise
+                        toward infinity right up to the point where the weakest link in the system blows up (hopefully
+                        that will
+                        be a fuse). Since there is no significant change in available power with small changes in pitch
+                        response, compared to simply adjusting the motor speed, there is little reason to depart from
+                        the
+                        theoretical optimum. So the model balances prop diameter against shaft speed to meet the power
+                        requirements of a particular design. Pitch is maintained at theoretical optimum.
+                    </li>
+                    <li>h. If one absolutely can’t find a practical combination of prop and reduction gear to meet the
+                        power
+                        requirements, the rule of thumb for pitch adjustment is 2 inches of pitch = 1 inch of diameter.
+                        Unfortunately the standard prop equations will not model the variation in thrust for pitch
+                        adjustments
+                        alone. You are on your own here.
+                    </li>
+                    <li>i. The shaft horsepower and thrust calculated from these fields should match or exceed the hull
+                        drag and
+                        estimated HP to achieve a given speed. These results are used to spec an appropriate motor,
+                        reduction
+                        gear, and system voltage to meet power requirements.
+                    </li>
+                </ul>
+
+            </li>
+            <li>3. MOTOR AND DRIVE SPECIFICATION
+                <ul>
+                    <li>a. The motor variables used in the calculations are the torque constant in Ft. Lbs per Amp and
+                        the
+                        voltage constant in RPMs per Volt. These are usually listed in the motor specifications under no
+                        load
+                        and maximum load. They can also be derived from the motor data charts that plot RPM and Current
+                        at a
+                        constant voltage with varying torque loads.
+                    </li>
+                    <li>b. The voltage constant determines the speed of rotation for a specific voltage input. This
+                        speed will
+                        be maintained within a very narrow range for any torque load up to the maximum peak torque
+                        output of the
+                        motor.
+                    </li>
+                    <li>c. The torque constant in Lbs/Ft determines the current demand in amps for a given torque load
+                        applied
+                        to the motor shaft. The current required will be the same for a given torque load regardless of
+                        motor
+                        speed. Actual torque load is determined by the prop. If the torque specifications are listed in
+                        Newton
+                        meters (Nm) or lbs/inch there are conversion tables to change this to Lbs/Ft.
+                    </li>
+                    <li>d. The drive reduction ratio variable will determine specific RPM and torque demand on the motor
+                        for a
+                        given prop shaft speed. From this the required motor voltage and current are calculated. This is
+                        where
+                        you match your available maximum system voltage and current limits to the drive train.
+                    </li>
+                    <li>e. Power input to the drive system will always be greater than power output. The motor
+                        efficiency rating
+                        determines thermodynamic losses in the motor. An arbitrary 4% loss is added to estimate bearing
+                        losses
+                        in the drive train and thermodynamic losses in the controller. These numbers are used to
+                        calculate power
+                        demands on the controller and battery compared to actual power output at the prop.
+                    </li>
+                </ul>
+            </li>
+            <li>CONTROLLER SPECIFICATION
+                <ul>
+                    <li>a. Controller specs are there for visual comparison with calculated data. They are not directly
+                        involved
+                        data calculations.
+                    </li>
+                    <li>b. Be sure to spec a controller with generous reserve current capacity for reliable operation at
+                        continuous cruising speeds.
+                    </li>
+                    <li>c. As a conservative designer I would want a controller with short term peak current capacity
+                        that
+                        matches or exceeds the motor’s short term peak current capacity. If you plan on continuous run
+                        times
+                        longer than one hour, the current demand for long term cruising should be around 50-70% of the
+                        one hour
+                        rating of the controller.
+                    </li>
+                </ul>
+            </li>
+            <li>BATTERY SPECIFICATION
+                <ul>
+                    <li>a. The individual battery voltage and Amp hour rating at the standard 20 hour discharge rate are
+                        used
+                        along with the Peukert factor to estimate run times in minutes for 50% depth of discharge, 80%
+                        depth of
+                        discharge and 100% depth of discharge.
+                    </li>
+                    <li>b. The string voltage is the maximum nominal system voltage available to the controller from
+                        individual
+                        batteries wired in series.
+                    </li>
+                    <li>c. The total number of batteries in the system must equal at minimum the number batteries in
+                        series to
+                        achieve string voltage. Batteries added in parallel to increase total amp hour capacity must be
+                        even
+                        multiples of the number in series.
+                    </li>
+                    <li>d. Peukerts factors can range from a low of around 1.08 for AGM batteries to a high of around 2
+                        for some
+                        flooded cell batteries. I have entered a mid range number that should be reasonable for most
+                        high
+                        quality marine grade deep cycle batteries. If you can find out from the manufacturer what the
+                        Peukert
+                        number is for your battery, enter that number in the data table.
+                    </li>
+                    <li>e. String current calculations are derived from the system KW rating after losses.
+                    </li>
+                    <li>f. Battery current calculations show the actual current demand for individual batteries in the
+                        string
+                        and are used to calculate run times incorporating the Peukert factor.
+                    </li>
+                    <li>g. Runtime calculations assume new batteries in fully charged condition.
+                    </li>
+                </ul>
+
+            </li>
+            <li>GENERAL ASSUMPTIONS OF THE MODEL
+                <ul>
+                    <li>a. The performance predictions are based on steady state cruising speeds for optimal
+                        displacement hulls
+                        in calm flat water conditions. No winds, no waves, no currents.
+                    </li>
+                    <li>b. There is no assumption that the results given will match the actual performance of any
+                        particular
+                        boat or propulsion system.
+                    </li>
+                    <li>c. This model assumes optimum conditions of the overall system: new components, proper
+                        installation,
+                        adequate wiring, etc.
+                    </li>
+                    <li>d. Performance predictions reflect absolute minimum requirements with generally accepted minimum
+                        allowances for overall system thermodynamic losses. There are no reserves built in.
+                    </li>
+                    <li>e. The user should regard this as a planning tool and allow for appropriate reserve capacities
+                        to meet
+                        changing conditions with respect to intended use.
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <p>
+            I hope this will prove to be a generally useful design tool for planning electric installations in small
+            boats. By
+            reducing the design process to a coherent set of known basic requirements we will be free to explore range
+            of
+            possibilities available for our intended application with confidence that results will be what we intended.
+            The
+            first edition is a theoretical tool only and has not been tested or verified by comparison to existing real
+            world
+            installations. I would appreciate any feedback that will help further refine this model including testing
+            against
+            real world data from existing boat owners. If in using this spreadsheet you discover any errors or omissions
+            or have
+            suggestions for improvements please e-mail me so I can correct them
+        </p>
+        <p>David Rasberry<br>
+            Email: taoistinsc@yahoo.com<br>
+            Copyright 2005
+        </p>
+
+    </mat-card-content>
+</mat-card>

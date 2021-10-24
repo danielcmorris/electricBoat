@@ -9,6 +9,7 @@ import { BatteryComponent } from './battery/battery.component';
 import { BoatComponent } from './boat/boat.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { HomeComponent } from './home/home.component';
+import { ManualComponent } from './manual/manual.component';
 import { MotorComponent } from './motor/motor.component';
 import { PerformanceComponent } from './performance/performance.component';
 
@@ -20,7 +21,8 @@ import { PerformanceComponent } from './performance/performance.component';
     BoatComponent,
     BatteryComponent,
     PerformanceComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    ManualComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { HomeComponent } from './home/home.component';
+import { ManualComponent } from './manual/manual.component';
 
 const routes: Routes = [{
   path: '',
@@ -9,14 +10,14 @@ const routes: Routes = [{
   children: [
  
     {
-      path: 'calc',
+      path: '',
       component: CalculatorComponent,
       data: { title: 'Calculator', breadcrumb: 'Calculator' }
     },
     {
-      path: '',
-      component: HomeComponent,
-      data: { title: 'Home', breadcrumb: 'Home' }
+      path: 'manual',
+      component: ManualComponent,
+      data: { title: 'Manual', breadcrumb: 'manual' }
     },
   ]
 }];
