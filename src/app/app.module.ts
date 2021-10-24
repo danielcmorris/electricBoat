@@ -7,8 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BatteryComponent } from './battery/battery.component';
 import { BoatComponent } from './boat/boat.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 import { HomeComponent } from './home/home.component';
 import { MotorComponent } from './motor/motor.component';
+import { PerformanceComponent } from './performance/performance.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { MotorComponent } from './motor/motor.component';
     HomeComponent,
     MotorComponent,
     BoatComponent,
-    BatteryComponent
+    BatteryComponent,
+    PerformanceComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,

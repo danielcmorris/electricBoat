@@ -1,9 +1,15 @@
 <h1>PERFORMANCE MODELING SPREADSHEET FOR ELECTRIC PROPULSION SYSTEMS IN DISPLACEMENT MONOHULL BOATS</h1>
 
-<app-boat></app-boat>
-
+<app-boat (myBoat)="myBoat($event)"></app-boat>
+<br>
+<app-motor (myMotor)="myMotor($event)"></app-motor>
+<br>
+<app-battery (myBattery)="myBattery($event)"></app-battery>
+<br>
+<app-performance [boat]="boat" [motor]="motor" [battery]="battery"></app-performance>
+<br>
 <form #myform="ngForm" (ngSubmit)="register(myform)" class="form form-register">
-    <div style="width:98%;height:670px;border:solid 1px;padding-left:10px; ">
+    <div style="width:98%;height:670px;border:solid 1px;padding-left:10px; display:none ">
         <div style="width:345px;float:left;;">
 
 
@@ -101,7 +107,7 @@
     <hr>
     <p style="page-break-before: always;">&nbsp;</p>
 
-    <div style="width:98%;height:700px;border:solid 1px;padding-left:10px;">
+    <div style="width:98%;height:700px;border:solid 1px;padding-left:10px;display: none;">
         <div style="width:420px;float:left;">
             <h2>MOTOR & DRIVE DATA </h2>
             <mat-form-field class="long-text"><input matInput name="Make & model" [(ngModel)]="motor.makeModel"

@@ -1,0 +1,66 @@
+<mat-card>
+    <mat-card-title>Estimated Performance Calculations</mat-card-title>
+    <mat-card-subtitle>Based upon your hull, motor, controller and batteries.
+    </mat-card-subtitle>
+    <mat-card-content>
+        <table class="styled-table">
+            <tr>
+                <TH colspan="3">Speed</TH>
+                 
+                <TH>Torque</TH>
+                <TH>Static Thrust</TH>
+                <TH colspan="6">Motor</TH>
+                 
+                <TH colspan="2">Battery</TH>
+                <TH colspan="3">Runtime in Minutes</TH>
+                <TH>Hours</TH>
+            </tr>
+            <tr>
+                <TH>Knots</TH>
+                <TH >
+                    <span class="tooltip">RPM
+                    <span class="tooltiptext">(((speed * 6080) / 60) / (0.55) * (12 / propeller.pitch))</span>
+                </span>
+                </TH>
+                <TH><span class="tooltip">HP
+                    <span class="tooltiptext">Math.pow(((Math.pow(this.rpm, 0.6) / 632.7) * propeller.diameter), (1 / 0.2))</span>
+                </span></TH>
+                <TH> LBS/FT</TH>
+                <TH>LBS</TH>
+                <TH>Torque</TH>
+                <TH>RPM</TH>
+                <TH>Volts</TH>
+                <TH>Current</TH>
+                <TH>KW</TH>
+                <TH>HP</TH>
+                <TH>String</TH>
+                <TH>Current</TH>
+                <TH>50%DOD</TH>
+                <TH>80%DOD</TH>
+                <TH>100%DOD</TH>
+                <TH>100%DOD</TH>
+            </tr>
+            <tr *ngFor="let row of performers;">
+                <td> {{row.strSpeed}} </td>
+                <td>{{row.rpm.toFixed(1)}}</td>
+                <td>{{row.hp.toFixed(1)}}</td>
+                <td>{{row.torque.toFixed(1)}}</td>
+                <td>{{row.thrust.toFixed(1)}}</td>
+                <td>{{row.motorTorque.toFixed(1)}}</td>
+                <td>{{row.motorRpm.toFixed(1)}}</td>
+                <td>{{row.volts.toFixed(1)}}</td>
+                <td>{{row.current.toFixed(1)}}</td>
+                <td>{{row.kw.toFixed(1)}}</td>
+                <td>{{row.motorHp.toFixed(1)}}</td>
+                <td>{{row.stringCurrent.toFixed(1)}}</td>
+                <td>{{row.batteryCurrent.toFixed(1)}}</td>
+                <td>{{row.runTime50.toFixed(2)}}</td>
+                <td>{{row.runTime80.toFixed(2)}}</td>
+                <td>{{row.runTimeFull.toFixed(2)}}</td>
+                <td>{{row.runTimeHour.toFixed(2)}}</td>
+            </tr>
+        </table>
+    
+
+    </mat-card-content>
+</mat-card>

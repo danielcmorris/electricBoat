@@ -1,0 +1,10 @@
+ 
+<app-boat (myBoat)="myBoat($event)"></app-boat>
+<p style="page-break-before: always;">&nbsp;</p>
+<app-motor (myMotor)="myMotor($event)"></app-motor>
+<p style="page-break-before: always;">&nbsp;</p>
+
+<app-battery (myBattery)="myBattery($event)"></app-battery>
+<p style="page-break-before: always;">&nbsp;</p>
+
+<app-performance [boat]="boat" [motor]="motor" [battery]="battery"></app-performance>

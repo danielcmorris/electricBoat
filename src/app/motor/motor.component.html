@@ -1,1 +1,61 @@
-<p>motor works!</p>
+<mat-card>
+    <mat-card-title>Power Train</mat-card-title>
+    <mat-card-subtitle>Details about your vessel's motor and controller
+    </mat-card-subtitle>
+    <mat-card-content>
+
+        <h2>MOTOR & DRIVE DATA </h2>
+        <mat-form-field class="long-text"><input matInput name="Make & model" [(ngModel)]="motor.makeModel"
+                placeholder="Make & model"></mat-form-field><br>
+        <mat-form-field class="mid-text"><input matInput name="Max Voltage rating" [(ngModel)]="motor.maxVoltageRating"
+                placeholder="Max Voltage rating"></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="RPM @ Max Voltage" [(ngModel)]="motor.rpmAtMaxVoltage"
+                placeholder="RPM @ Max Voltage"></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="Max. continuous Current rating"
+                [(ngModel)]="motor.maxContinuousCurrentRating" placeholder="Max. continuous Current rating">
+        </mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="Max.continuous torque rating"
+                [(ngModel)]="motor.maxContinuousTorqueRating" placeholder="Max.continuous torque rating">
+        </mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="Max peak Current rating"
+                [(ngModel)]="motor.maxPeakCurrentRating" placeholder="Max peak Current rating"></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="Max peak torque rating"
+                [(ngModel)]="motor.maxPeakTorqueRating" placeholder="Max peak torque rating"></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="Motor efficiency rating"
+                [(ngModel)]="motor.motorEfficiencyRating" placeholder="Motor efficiency rating"></mat-form-field>
+
+        <mat-form-field class="mid-text"><input matInput name="Motor torque constant:lbs/ft. per amp"
+                [(ngModel)]="motor.motorTorqueConstantLbsPerFtPerAmp"
+                placeholder="Motor torque constant:lbs/ft. per amp">
+        </mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="Motor voltage constant: rpms per Volt"
+                [(ngModel)]="motor.motorVoltageConstantRpmsPerVolt" placeholder="Motor voltage constant: rpms per Volt">
+        </mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="Motorshaft to prop shaft reduction ratio"
+                [(ngModel)]="motor.motorshaftToPropShaftReductionRatio"
+                placeholder="Motorshaft to prop shaft reduction ratio">
+        </mat-form-field>
+        <h2>CONTROLLER DATA</h2>
+        <mat-form-field class="long-text"><input matInput name="motor.powerController.makeModel"
+                [(ngModel)]="motor.powerController.makeModel" placeholder="Make & model"></mat-form-field><br>
+        <mat-form-field class="mid-text"><input matInput name="motor.powerController.minVoltageRating"
+                [(ngModel)]="motor.powerController.minVoltageRating" placeholder="Min Voltage rating"></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="motor.powerController.maxVoltageRating"
+                [(ngModel)]="motor.powerController.maxVoltageRating" placeholder="Max Voltage rating"></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="motor.powerController.MaxPeakVoltage"
+                [(ngModel)]="motor.powerController.MaxPeakVoltage" placeholder="Max Peak Current (1 min or less) (amps)">
+        </mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="motor.powerController.maxOneHourRating"
+                [(ngModel)]="motor.powerController.maxOneHourRating" placeholder="Max 1 Hour Current  (amps)">
+        </mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="motor.powerController.maxContinuousCurrentRating"
+                [(ngModel)]="motor.powerController.maxContinuousCurrentRating" placeholder="Max Continuous Current (amps)">
+        </mat-form-field>
+   
+   
+        <mat-card-actions>
+            <button mat-raised-button>Cancel</button>
+            <button mat-raised-button color="primary" (click)="save()">Continue</button>
+        </mat-card-actions>
+     </mat-card-content>
+</mat-card>

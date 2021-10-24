@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { MonoTypeOperatorFunction } from 'rxjs';
+import { NgForm } from '@angular/forms'; 
+import { Boat } from '../models/boat';
+import { Propeller } from '../models/propeller';
+import {Motor, PowerController} from '../models/motor'
+import { Battery } from '../models/battery';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +33,8 @@ export class HomeComponent implements OnInit {
     motorEfficiencyRating: .92,
     motorTorqueConstantLbsPerFtPerAmp: 0.1475124299,
     motorVoltageConstantRpmsPerVolt: 100.00,
-    motorshaftToPropShaftReductionRatio: 2.00
+    motorshaftToPropShaftReductionRatio: 2.00,
+    powerController : new PowerController()
   }
 
   controller = {
@@ -55,7 +59,7 @@ export class HomeComponent implements OnInit {
 
   propeller: Propeller = new Propeller();
   boat: any = {};
-
+  
 
   performers: any = [];
   speeds = [.3, .4, .5, .6, .7, .8, .9, .95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35]
@@ -76,19 +80,25 @@ export class HomeComponent implements OnInit {
       this.performers.push(p);
     });
 
-
-
-
-
   }
 
-  ngOnInit(): void {
-
-
-
-
-
+  myBoat($e:Boat){
+    console.log('myBoat',$e);
+    this.boat = new Boat();
+    this.boat = $e;
+   }
+  myMotor($e:Motor){
+    console.log('myMotor',$e);
+    this.motor = new Motor();
+    this.motor = $e;
+    this.controller = this.motor.powerController;
   }
+  myBattery($e:Battery){
+    console.log('myBattery',$e);
+    this.battery = new Battery();
+    this.battery = $e;
+  }
+  ngOnInit(): void { }
 
 
   getCSA() {
@@ -146,6 +156,8 @@ export class HomeComponent implements OnInit {
   calculatedPitch() {
     let speed = this.propeller.maxHullSpeedInKnots;
     let rpm = this.propeller.rpmAtHullSpeed;
+   // let retval = (((speed * 101.3) / eff) * 12) / .55;
+
     return (((speed * 101.3) / rpm) * 12) / 0.55
   }
   propCalc(): number {
@@ -177,50 +189,8 @@ export class HomeComponent implements OnInit {
 
 }
 
-export class Motor {
-
-  makeModel: string = '';
-  maxVoltageRating: number = 0;
-  rpmAtMaxVoltage: number = 0;
-  maxContinuousCurrentRating: number = 0;
-  maxContinuousTorqueRating: number = 0;
-  maxPeakCurrentRating: number = 0;
-  maxPeakTorqueRating: number = 0;
-  motorEfficiencyRating: number = 0;
-  motorTorqueConstantLbsPerFtPerAmp: number = 0;
-  motorVoltageConstantRpmsPerVolt: number = 0;
-  motorshaftToPropShaftReductionRatio: number = 0;
 
 
-}
-export class Propeller {
-  diameter: number = 0;
-  rpmAtHullSpeed: number = 0;
-  maxHullSpeedInKnots: number = 0;
-  constructor() { }
-  public get pitch(): number {
-    return this.calculatedPitch()
-  }
-  private calculatedPitch() {
-    let speed = this.maxHullSpeedInKnots;
-    let rpm = this.rpmAtHullSpeed;
-    return (((speed * 101.3) / rpm) * 12) / 0.55
-  }
-
-
-
-}
-
-
-export class Battery {
-  makeModel: string = "";
-  bci: any ="";
-  ampHourRating: number = 0;
-  voltage: number = 0;
-  count: number = 0;
-  stringVoltage: number = 0;
-  peukertNumber: number = 0;
-}
 
 export class Performer {
   strSpeed: string = "";

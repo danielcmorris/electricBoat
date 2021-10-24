@@ -1,8 +1,9 @@
 <mat-card>
-    <mat-card-title>Hull Data</mat-card-title>
+    <mat-card-title>Vessel Details</mat-card-title>
     <mat-card-subtitle>Details about your vessel's hull will help calculate drag and maximum hull speed
     </mat-card-subtitle>
     <mat-card-content>
+        <h2>Hull Data</h2>
         <mat-form-field class="mid-text">
             <input matInput name="makeModel" placeholder="Boat Make and Model" [(ngModel)]="boat.makeModel">
         </mat-form-field>
@@ -13,7 +14,7 @@
         <mat-form-field class="mid-text"><input matInput name="displacement" [(ngModel)]="boat.displacement"
                 placeholder="Displacement in Lbs"></mat-form-field>
         <mat-form-field class="mid-text">
-            <input matInput name="depth" [(ngModel)]="boat.depth" placeholder="Draft (exclude keel and rudder)">
+            <input matInput name="Draft" [(ngModel)]="boat.draft" placeholder="Draft (exclude keel and rudder)">
         </mat-form-field>
         <mat-form-field class="mid-text">
             <input matInput name="beam" [(ngModel)]="boat.beam" placeholder="Maximum Waterline Beam">
@@ -21,6 +22,25 @@
         <mat-form-field class="mid-text">
             <input matInput name="search" [(ngModel)]="boat.prismatic" placeholder="Prismatic Coefficent">
         </mat-form-field>
+        <h2>Propeller</h2>
+        <mat-form-field class="mid-text">
+            <input matInput name="propeller.diameter" [(ngModel)]="propeller.diameter"
+                placeholder="Propeller Diameter">
+        </mat-form-field>
+        <mat-form-field class="mid-text">
+            <input matInput name="propeller.maxHullSpeedInKnots" [(ngModel)]="propeller.maxHullSpeedInKnots"
+                placeholder="Max Hullspeed (in knots)">
+        </mat-form-field>
+        <mat-form-field class="mid-text">
+            <input matInput name="propeller.rpmAtHullSpeed" [(ngModel)]="propeller.rpmAtHullSpeed"
+                placeholder="Shaft RPM @ Hull Speed">
+        </mat-form-field>
+         <br>
+         <div style="width:100%;margin-bottom: 30px;">
+            <ul *ngIf="propeller.pitch>0 && propeller.pitch<10000000">
+                <li>Calculated Pitch for 55% slip: {{propeller.pitch}}</li>
+            </ul>
+        </div>
 
         <h2>HULL PERFORMANCE</h2>
         <table class="styled-table">
@@ -58,11 +78,18 @@
             </tr>
         </table>
 
-
+        <h2>Propeller Model</h2>
+        <ul>
+            <li>Recommended Prop Diameter : <b>{{prop()}}</b></li>
+            <li>Efficient shaft speed @ hull speed : <b>{{efficient()}}</b></li>
+            <li>Optimum pitch for 55% slip @ hull speed: <b>{{optPitch()}}</b></li>
+        </ul>
+        
+       
 
         <mat-card-actions>
             <button mat-raised-button>Cancel</button>
-            <button mat-raised-button color="primary">Continue</button>
+            <button mat-raised-button color="primary" (click)="save()">Continue</button>
         </mat-card-actions>
 
     </mat-card-content>
