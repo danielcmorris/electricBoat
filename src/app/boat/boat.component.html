@@ -1,38 +1,38 @@
-<mat-card>
+<!-- <mat-card>
     <mat-card-title>Vessel Details</mat-card-title>
     <mat-card-subtitle>Details about your vessel's hull will help calculate drag and maximum hull speed
     </mat-card-subtitle>
-    <mat-card-content>
+    <mat-card-content> -->
         <h2>Hull Data</h2>
         <mat-form-field class="mid-text">
             <input matInput name="makeModel" placeholder="Boat Make and Model" [(ngModel)]="boat.makeModel">
         </mat-form-field>
         <mat-form-field class="mid-text">
             <input matInput name="waterline" [(ngModel)]="boat.waterline"
-                placeholder="LWL (lenght of the boat at the waterline)">
+                placeholder="LWL (lenght of the boat at the waterline)" required>
         </mat-form-field>
         <mat-form-field class="mid-text"><input matInput name="displacement" [(ngModel)]="boat.displacement"
-                placeholder="Displacement in Lbs"></mat-form-field>
+                placeholder="Displacement in Lbs" type="number"  required></mat-form-field>
         <mat-form-field class="mid-text">
-            <input matInput name="Draft" [(ngModel)]="boat.draft" placeholder="Draft (exclude keel and rudder)">
+            <input matInput name="Draft" [(ngModel)]="boat.draft" type="number"  placeholder="Draft (exclude keel and rudder)" required>
         </mat-form-field>
         <mat-form-field class="mid-text">
-            <input matInput name="beam" [(ngModel)]="boat.beam" placeholder="Maximum Waterline Beam">
+            <input matInput name="beam" [(ngModel)]="boat.beam"  type="number" placeholder="Maximum Waterline Beam" required>
         </mat-form-field>
         <mat-form-field class="mid-text">
-            <input matInput name="search" [(ngModel)]="boat.prismatic" placeholder="Prismatic Coefficent">
+            <input matInput name="search" [(ngModel)]="boat.prismatic"  type="number" placeholder="Prismatic Coefficent">
         </mat-form-field>
         <h2>Propeller</h2>
         <mat-form-field class="mid-text">
-            <input matInput name="propeller.diameter" [(ngModel)]="propeller.diameter"
+            <input matInput name="propeller.diameter"  type="number" [(ngModel)]="propeller.diameter" required
                 placeholder="Propeller Diameter">
         </mat-form-field>
         <mat-form-field class="mid-text">
-            <input matInput name="propeller.maxHullSpeedInKnots" [(ngModel)]="propeller.maxHullSpeedInKnots"
+            <input matInput name="propeller.maxHullSpeedInKnots" type="number"  [(ngModel)]="propeller.maxHullSpeedInKnots" required
                 placeholder="Max Hullspeed (in knots)">
         </mat-form-field>
         <mat-form-field class="mid-text">
-            <input matInput name="propeller.rpmAtHullSpeed" [(ngModel)]="propeller.rpmAtHullSpeed"
+            <input matInput name="propeller.rpmAtHullSpeed" type="number"  [(ngModel)]="propeller.rpmAtHullSpeed" required
                 placeholder="Shaft RPM @ Hull Speed">
         </mat-form-field>
          <br>
@@ -86,7 +86,7 @@
         </ul>
         
        
-
+<!-- 
         <mat-card-actions>
             <button mat-raised-button>Cancel</button>
             <button mat-raised-button color="primary" (click)="save()">Continue</button>
@@ -94,4 +94,4 @@
 
     </mat-card-content>
     <mat-card-footer></mat-card-footer>
-</mat-card>
+</mat-card> -->

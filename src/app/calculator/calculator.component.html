@@ -1,10 +1,27 @@
- 
-<app-boat (myBoat)="myBoat($event)"></app-boat>
+<div style="width: 100%;">
+<div style="min-width: 500px;max-width:1320px;padding:20px;overflow-x: scroll;margin-left: auto;margin-right: auto;">
+    <mat-card>
+        <mat-tab-group mat-stretch-tabs class="tab-group">
+            <mat-tab label="Vessel Details">
+                <app-boat (myBoat)="myBoat($event)"></app-boat>
+            </mat-tab>
+            <mat-tab label="Power Train">
+                <app-motor (myMotor)="myMotor($event)"></app-motor>
+            </mat-tab>
+            <mat-tab label="Battery">
+                <app-battery (myBattery)="myBattery($event)"></app-battery>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+    <p style="page-break-before: always;">&nbsp;</p>
+
+    <!-- 
 <p style="page-break-before: always;">&nbsp;</p>
-<app-motor (myMotor)="myMotor($event)"></app-motor>
 <p style="page-break-before: always;">&nbsp;</p>
 
-<app-battery (myBattery)="myBattery($event)"></app-battery>
-<p style="page-break-before: always;">&nbsp;</p>
+<p style="page-break-before: always;">&nbsp;</p> -->
 
-<app-performance [boat]="boat" [motor]="motor" [battery]="battery"></app-performance>
+    <app-performance [boat]="boat" [motor]="motor" [battery]="battery"></app-performance>
+
+</div>
+</div>

@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /eboat/
+Options +FollowSymLinks
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.html [L,QSA]

@@ -3,6 +3,7 @@
     <mat-card-subtitle>Based upon your hull, motor, controller and batteries.
     </mat-card-subtitle>
     <mat-card-content>
+        <div style="width:100%;overflow-x: scroll; ">
         <table class="styled-table">
             <tr>
                 <TH colspan="3">Speed</TH>
@@ -13,7 +14,7 @@
                  
                 <TH colspan="2">Battery</TH>
                 <TH colspan="3">Runtime in Minutes</TH>
-                <TH>Hours</TH>
+           
             </tr>
             <tr>
                 <TH>Knots</TH>
@@ -38,7 +39,7 @@
                 <TH>50%DOD</TH>
                 <TH>80%DOD</TH>
                 <TH>100%DOD</TH>
-                <TH>100%DOD</TH>
+            
             </tr>
             <tr *ngFor="let row of performers;">
                 <td> {{row.strSpeed}} </td>
@@ -56,11 +57,10 @@
                 <td>{{row.batteryCurrent.toFixed(1)}}</td>
                 <td>{{row.runTime50.toFixed(2)}}</td>
                 <td>{{row.runTime80.toFixed(2)}}</td>
-                <td>{{row.runTimeFull.toFixed(2)}}</td>
-                <td>{{row.runTimeHour.toFixed(2)}}</td>
+                <td>{{row.runTimeFull.toFixed(2)}}</td> 
             </tr>
         </table>
-    
+    </div>
 
     </mat-card-content>
 </mat-card>

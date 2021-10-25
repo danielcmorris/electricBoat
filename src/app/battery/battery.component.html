@@ -1,26 +1,18 @@
-<mat-card>
-    <mat-card-title>Battery Specification</mat-card-title>
-    <mat-card-subtitle>Details about your vessel's batteries
-    </mat-card-subtitle>
-    <mat-card-content>
+ 
+
+        <h2>Battery Specification</h2>
         <mat-form-field class="mid-text"><input matInput name="Make & Model" [(ngModel)]="battery.makeModel"
                 placeholder="Make & Model"></mat-form-field>
         <mat-form-field class="mid-text"><input matInput name="BCI group" [(ngModel)]="battery.bci"
                 placeholder="BCI group"></mat-form-field>
         <mat-form-field class="mid-text"><input matInput name="Amp Hour Rating @ C/20"
-                [(ngModel)]="battery.ampHourRating" placeholder="Amp Hour Rating @ C/20"></mat-form-field>
-        <mat-form-field class="mid-text"><input matInput name="Battery voltage" [(ngModel)]="battery.voltage"
-                placeholder="Battery voltage"></mat-form-field>
-        <mat-form-field class="mid-text"><input matInput name="# of batteries" [(ngModel)]="battery.count"
-                placeholder="# of batteries"></mat-form-field>
-        <mat-form-field class="mid-text"><input matInput name="String voltage" [(ngModel)]="battery.stringVoltage"
-                placeholder="String voltage"></mat-form-field>
-        <mat-form-field class="mid-text"><input matInput name="Peukert #" [(ngModel)]="battery.peukertNumber"
-                placeholder="Peukert #"></mat-form-field>
-   
-                <mat-card-actions>
-                    <button mat-raised-button>Cancel</button>
-                    <button mat-raised-button color="primary" (click)="save()">Continue</button>
-                </mat-card-actions>
-            </mat-card-content>
-</mat-card>
+                [(ngModel)]="battery.ampHourRating" placeholder="Amp Hour Rating @ C/20" type="number"  required></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="Battery voltage" type="number"  [(ngModel)]="battery.voltage"
+                placeholder="Battery voltage" required></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="# of batteries" type="number"  [(ngModel)]="battery.count"
+                placeholder="# of batteries" required></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="String voltage" type="number" [(ngModel)]="battery.stringVoltage"
+                placeholder="String voltage" required></mat-form-field>
+        <mat-form-field class="mid-text"><input matInput name="Peukert #" type="number"  [(ngModel)]="battery.peukertNumber"
+                placeholder="Peukert #" required></mat-form-field>
+ 
