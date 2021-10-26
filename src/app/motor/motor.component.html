@@ -19,16 +19,16 @@
         <mat-form-field class="mid-text"><input matInput name="Motor efficiency rating"
                 [(ngModel)]="motor.motorEfficiencyRating" placeholder="Motor efficiency rating" required></mat-form-field>
 
-        <mat-form-field class="mid-text"><input matInput name="Motor torque constant:lbs/ft. per amp"
+        <mat-form-field class="mid-text"><input matInput name="torque constant:lbs/ft. per amp"
                 [(ngModel)]="motor.motorTorqueConstantLbsPerFtPerAmp"
-                placeholder="Motor torque constant:lbs/ft. per amp" required>
+                placeholder="torque constant:lbs/ft. per amp" required>
         </mat-form-field>
-        <mat-form-field class="mid-text"><input matInput name="Motor voltage constant: rpms per Volt"
-                [(ngModel)]="motor.motorVoltageConstantRpmsPerVolt" placeholder="Motor voltage constant: rpms per Volt" required>
+        <mat-form-field class="mid-text"><input matInput name="voltage constant: rpms per Volt"
+                [(ngModel)]="motor.motorVoltageConstantRpmsPerVolt" placeholder="voltage constant: rpms per Volt" required>
         </mat-form-field>
-        <mat-form-field class="mid-text"><input matInput name="Motorshaft to prop shaft reduction ratio"
+        <mat-form-field class="mid-text"><input matInput name="shaft reduction ratio"
                 [(ngModel)]="motor.motorshaftToPropShaftReductionRatio"
-                placeholder="Motorshaft to prop shaft reduction ratio" required>
+                placeholder="shaft reduction ratio" required>
         </mat-form-field>
         <h2>CONTROLLER DATA</h2>
         <mat-form-field class="long-text"><input matInput name="motor.powerController.makeModel"
